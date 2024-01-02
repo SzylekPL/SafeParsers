@@ -112,6 +112,15 @@
 				DefaultErrorDisplayChannel();
 			return i;
 		}
+		public static TEnum EnumType<TEnum>(bool IgnoreCase = true, InputChannel? inputChannel = null) where TEnum : struct, Enum
+		{
+			inputChannel ??= DefaultInputChannel;
+			TEnum i;
+			while (!Enum.TryParse(inputChannel(), IgnoreCase, out i))
+				DefaultErrorDisplayChannel();
+			return i;
+		}
+
 		public static string String(InputChannel? inputChannel = null)
 		{
 			inputChannel ??= DefaultInputChannel;
